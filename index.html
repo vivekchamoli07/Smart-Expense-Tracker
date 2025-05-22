@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Expense Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header>
+      <h1><i class="fas fa-wallet"></i> Smart Expense Tracker</h1>
+      <p class="subtitle">Track your spending, achieve your goals</p>
+    </header>
+
+    <main>
+      <div class="dashboard-grid">
+
+        <!-- Add New Expense Section -->
+        <section class="input-section" id="add-expense">
+          <h2>Add New Expense</h2>
+          <div class="input-group">
+            <input type="text" id="title" placeholder="Expense Title" />
+            <input type="number" id="amount" placeholder="Amount" min="0" step="0.01" />
+            <select id="category">
+              <option value="">Select Category</option>
+              <option value="Food">Food & Dining</option>
+              <option value="Transport">Transportation</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Bills">Bills & Utilities</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Health">Health</option>
+              <option value="Others">Others</option>
+            </select>
+            <input type="date" id="date" />
+
+            <!-- Add / Update Buttons -->
+            <button id="add-btn" class="primary-btn">
+              <i class="fas fa-plus"></i> Add Expense
+            </button>
+            <button id="update-btn" class="update-btn" style="display: none;">
+              <i class="fas fa-save"></i> Update Expense
+            </button>
+          </div>
+        </section>
+
+        <!-- Summary Cards Section -->
+        <section class="summary-cards">
+          <div class="summary-card total">
+            <h3>Total Expenses</h3>
+            <p>₹<span id="total">0.00</span></p>
+          </div>
+          <div class="summary-card monthly">
+            <h3>This Month</h3>
+            <p>₹<span id="monthly">0.00</span></p>
+          </div>
+          <div class="summary-card average">
+            <h3>Daily Average</h3>
+            <p>₹<span id="average">0.00</span></p>
+          </div>
+        </section>
+
+        <!-- Income Management Section -->
+        <section class="income-section">
+          <h2>Income Management</h2>
+          <div class="input-group">
+            <input type="number" id="monthly-income" placeholder="Monthly Income" min="0" step="0.01" />
+            <button id="save-income" class="primary-btn">
+              <i class="fas fa-save"></i> Save Income
+            </button>
+          </div>
+          <div class="income-summary">
+            <p>Monthly Income: ₹<span id="income-display">0.00</span></p>
+            <p>Remaining Balance: ₹<span id="balance-display">0.00</span></p>
+          </div>
+        </section>
+
+        <!-- Pending Amounts Section -->
+        <section class="pending-amounts-section">
+          <h2>Pending Amounts</h2>
+          <div class="input-group">
+            <input type="text" id="person-name" placeholder="Person Name" />
+            <input type="number" id="pending-amount" placeholder="Amount" min="0" step="0.01" />
+            <select id="transaction-type">
+              <option value="borrowed">Borrowed</option>
+              <option value="lend">Lend</option>
+            </select>
+            <button id="add-pending" class="primary-btn">
+              <i class="fas fa-plus"></i> Add Transaction
+            </button>
+          </div>
+          <div class="pending-list" id="pending-transactions"></div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section" id="charts">
+          <div class="chart-container">
+            <canvas id="categoryChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="trendChart"></canvas>
+          </div>
+        </section>
+
+        <!-- Expense Table Section -->
+        <section class="expense-table-section">
+          <div class="table-header">
+            <h2>Recent Expenses</h2>
+            <button id="download-excel" class="secondary-btn">
+              <i class="fas fa-download"></i> Export to Excel
+            </button>
+          </div>
+          <div class="table-container" id="expense-list">
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
