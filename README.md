@@ -38,7 +38,7 @@ Built to be fully responsive. Works perfectly on:
 ## 🌐 Live Demo
 
 Check out the live app here:  
-🔗 https://utkarsh-webdev.github.io/smart-expense-tracker/
+🔗 [https://github.com/vivekchamoli07/Smart-Expense-Tracker]
 
 ---
 
